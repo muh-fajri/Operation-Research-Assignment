@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+  <title>Metode Penugasan</title>
+
+  <!-- General CSS Files -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+  <!-- CSS Libraries -->
+  <link rel="stylesheet" href="./node_modules/bootstrap-social/bootstrap-social.css">
+
+</head>
+
+<body>
+  <div id="app">
+    <section class="section">
+      <div class="container mt-3">
+        <div class="row">
+            <div class="col">
+                <nav id="content" class="navbar navbar-expand-lg navbar-dark bg-primary">
+                    <a class="navbar-brand" href="#">Riset Operasi</a>
+                </nav>
+
+                <div class="jumbotron jumbotron-fluid">
+                    <div class="container">
+                        <h1 class="display-4">Masalah Penugasan</h1>
+                        <p class="lead">Salah satu metode yang digunakan untuk penugasan adalah Metode Hungarian. Penugasan yang dapat dilakukan yaitu minimisasi dan maksimisasi. Minimisasi digunakan saat hendak melakukan perhitungan pengeluaran atau biaya yang dibutuhkan untuk menyelesaikan sejumlah tugas. Maksimisasi digunakan untuk menyelesaikan permasalahan untuk melakukan perhitungan agar dapat mengoptimumkan keuntungan atau jumlah produk yang akan diproduksi.</p>
+                    </div>
+                </div>
+
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="min-tab" data-toggle="tab" href="#min" role="tab" aria-controls="min" aria-selected="true">Minimisasi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="max-tab" data-toggle="tab" href="#max" role="tab" aria-controls="max" aria-selected="false">Maksimisasi</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="min" role="tabpanel" aria-labelledby="min-tab">
+                        <div id="accordion">
+                            <div class="card">
+                                <div class="card-header" id="headingQ1">
+                                    <h5 class="mb-0">
+                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseQ1" aria-expanded="true" aria-controls="collapseQ1">
+                                        Soal Minimisasi
+                                    </button>
+                                    </h5>
+                                </div>
+                          
+                                <div id="collapseQ1" class="collapse show" aria-labelledby="headingQ1" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <p>Sebuah perusahaan pengecoran logam mempunyai empat jenis mesin yang diberi nama M1, M2, M3, dan M4. Setiap mesian mempunyai kapasitas yang berbeda dalam pengoperasiannya. Dalam minggu mendatang perusahaan mendapatkan pesanan untuk menyelesaikan empat jenis pekerjaan (<i>job</i>) yaitu J1, J2, J3, dan J4. Biaya pengoperasian setiap pekerjaan oleh keempat mesin dapat dilihat pada tabel berikut:</p>
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="row" rowspan="2">Job</th>
+                                                    <th scope="col" colspan="4">Mesin</th>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="col">M1</th>
+                                                    <th scope="col">M2</th>
+                                                    <th scope="col">M3</th>
+                                                    <th scope="col">M4</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row">J1</th>
+                                                    <td>210</td>
+                                                    <td>150</td>
+                                                    <td>180</td>
+                                                    <td>130</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">J2</th>
+                                                    <td>140</td>
+                                                    <td>160</td>
+                                                    <td>200</td>
+                                                    <td>190</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">J3</th>
+                                                    <td>150</td>
+                                                    <td>175</td>
+                                                    <td>220</td>
+                                                    <td>200</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">J4</th>
+                                                    <td>200</td>
+                                                    <td>115</td>
+                                                    <td>160</td>
+                                                    <td>190</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        Masalahnya adalah bagaimana menugaskan keempat mesin untuk menyelesaikan keempat jenis pekerjaan agar total biaya pekerjaan minimum?
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingOne">
+                                    <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                        1. Tabel Biaya
+                                    </button>
+                                    </h5>
+                                </div>
+                          
+                                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <div class="alert alert-primary" role="alert">
+                                            <h4 class="alert-heading">Ketentuan:</h4>
+                                            <p>Dari permasalahan yang ada, buatkan tabel biaya.</p>
+                                        </div>
+                                        <table class="table table-hover">
+                                            <caption>Tabel Biaya</caption>
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">M1</th>
+                                                    <th scope="col">M2</th>
+                                                    <th scope="col">M3</th>
+                                                    <th scope="col">M4</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row">J1</th>
+                                                    <td>210</td>
+                                                    <td>150</td>
+                                                    <td>180</td>
+                                                    <td>130</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">J2</th>
+                                                    <td>140</td>
+                                                    <td>160</td>
+                                                    <td>200</td>
+                                                    <td>190</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">J3</th>
+                                                    <td>150</td>
+                                                    <td>175</td>
+                                                    <td>220</td>
+                                                    <td>200</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">J4</th>
+                                                    <td>200</td>
+                                                    <td>115</td>
+                                                    <td>160</td>
+                                                    <td>190</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                              <div class="card-header" id="headingTwo">
+                                <h5 class="mb-0">
+                                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    2. Matriks Biaya (<i>Reduce Cost Matrix</i>)
+                                  </button>
+                                </h5>
+                              </div>
+                              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                <div class="card-body">
+                                    <div class="alert alert-primary" role="alert">
+                                        <h4 class="alert-heading">Ketentuan:</h4>
+                                        <p>Tentukan nilai terkecil setiap baris lalu lakukan pengurangan ke masing-masing elemen baris.</p>
+                                    </div>
+                                    <table class="table table-hover">
+                                        <caption>Tabel Pengurangan Baris</caption>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">M1</th>
+                                                <th scope="col">M2</th>
+                                                <th scope="col">M3</th>
+                                                <th scope="col">M4</th>
+                                                <th scope="col">Nilai Terkecil</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">J1</th>
+                                                <td>210</td>
+                                                <td>150</td>
+                                                <td>180</td>
+                                                <td><b class="text-success">130</b></td>
+                                                <td>130</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">J2</th>
+                                                <td><b class="text-success">140</b></td>
+                                                <td>160</td>
+                                                <td>200</td>
+                                                <td>190</td>
+                                                <td>140</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">J3</th>
+                                                <td><b class="text-success">150</b></td>
+                                                <td>175</td>
+                                                <td>220</td>
+                                                <td>200</td>
+                                                <td>150</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">J4</th>
+                                                <td>200</td>
+                                                <td><b class="text-success">115</b></td>
+                                                <td>160</td>
+                                                <td>190</td>
+                                                <td>115</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <table class="table table-hover">
+                                        <caption>Tabel <i>Reduce Cost Matrix</i></caption>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">M1</th>
+                                                <th scope="col">M2</th>
+                                                <th scope="col">M3</th>
+                                                <th scope="col">M4</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">J1</th>
+                                                <td>80</td>
+                                                <td>20</td>
+                                                <td>50</td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">J2</th>
+                                                <td>0</td>
+                                                <td>20</td>
+                                                <td>60</td>
+                                                <td>50</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">J3</th>
+                                                <td>0</td>
+                                                <td>25</td>
+                                                <td>70</td>
+                                                <td>50</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">J4</th>
+                                                <td>85</td>
+                                                <td>0</td>
+                                                <td>45</td>
+                                                <td>75</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="card">
+                              <div class="card-header" id="headingThree">
+                                <h5 class="mb-0">
+                                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    3. Tabel <i>Total Opportunity Cost Matrix</i>
+                                  </button>
+                                </h5>
+                              </div>
+                              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                <div class="card-body">
+                                    <div class="alert alert-warning" role="alert">
+                                        <h4 class="alert-heading">Perhatian:</h4>
+                                        <p>Jika terdapat kolom yang tidak memiliki nol (0), kurangi dengan nilai terkecilnya untuk setiap elemen di kolom tersebut.</p>
+                                    </div>
+                                    <table class="table table-hover">
+                                        <caption>Tabel Pengurangan Kolom</caption>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">M1</th>
+                                                <th scope="col">M2</th>
+                                                <th scope="col">M3</th>
+                                                <th scope="col">M4</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">J1</th>
+                                                <td>80</td>
+                                                <td>20</td>
+                                                <td>50</td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">J2</th>
+                                                <td>0</td>
+                                                <td>20</td>
+                                                <td>60</td>
+                                                <td>50</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">J3</th>
+                                                <td>0</td>
+                                                <td>25</td>
+                                                <td>70</td>
+                                                <td>50</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">J4</th>
+                                                <td>85</td>
+                                                <td>0</td>
+                                                <td><b class="text-success">45</b></td>
+                                                <td>75</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <table class="table table-hover">
+                                        <caption>Tabel <i>Total Opportunity Cost Matrix</i></caption>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">M1</th>
+                                                <th scope="col">M2</th>
+                                                <th scope="col">M3</th>
+                                                <th scope="col">M4</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">J1</th>
+                                                <td>80</td>
+                                                <td>20</td>
+                                                <td>5</td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">J2</th>
+                                                <td>0</td>
+                                                <td>20</td>
+                                                <td>15</td>
+                                                <td>50</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">J3</th>
+                                                <td>0</td>
+                                                <td>25</td>
+                                                <td>25</td>
+                                                <td>50</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">J4</th>
+                                                <td>85</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>75</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingFour">
+                                  <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                      4. Membentuk Penugasan Optimum
+                                    </button>
+                                  </h5>
+                                </div>
+                                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+                                  <div class="card-body">
+                                    <div class="alert alert-primary" role="alert">
+                                        <h4 class="alert-heading">Ketentuan:</h4>
+                                        <p>
+                                            <ul>
+                                                <li>Utamakan garis horizontal</li>
+                                                <li>Utamakan baris dengan nilai nol (0) yang lebih banyak.</li>
+                                                <li>Utamakan kolom dengan nol (0) yang lebih banyak dan tidak berpotongan dengan dua garis, atau persilangan nol (0) paling sedikit.</li>
+                                                <li>Jumlah garis harus sama dengan jumlah baris/kolom.</li>
+                                            </ul>
+                                        </p>
+                                    </div>
+                                    <table class="table table-hover">
+                                        <caption>Tabel Penugasan Optimum</caption>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">M1</th>
+                                                <th scope="col">M2</th>
+                                                <th scope="col">M3</th>
+                                                <th scope="col">M4</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">J1</th>
+                                                <td class="bg-dark text-light">80</td>
+                                                <td class="bg-dark text-light">20</td>
+                                                <td class="bg-dark text-light">5</td>
+                                                <td class="bg-dark text-light">0</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">J2</th>
+                                                <td class="bg-dark text-light">0</td>
+                                                <td>20</td>
+                                                <td>15</td>
+                                                <td>50</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">J3</th>
+                                                <td class="bg-dark text-light">0</td>
+                                                <td>25</td>
+                                                <td>25</td>
+                                                <td>50</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">J4</th>
+                                                <td class="bg-dark text-light">85</td>
+                                                <td class="bg-dark text-light">0</td>
+                                                <td class="bg-dark text-light">0</td>
+                                                <td class="bg-dark text-light">75</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="alert alert-danger" role="alert">
+                                        Kerena jumlah garis yang dapat dibuat belum memenuhi ketentuan, maka tabel harus direvisi.
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingFive">
+                                  <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                      5. Revisi Tabel (<i>Revized Matrix</i>)
+                                    </button>
+                                  </h5>
+                                </div>
+                                <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+                                  <div class="card-body">
+                                    <div class="alert alert-primary" role="alert">
+                                        <h4 class="alert-heading">Ketentuan:</h4>
+                                        <p>
+                                            <ul>
+                                                <li>Kurangkan setiap elemen dengan nilai terkecil yang tidak dilewati garis.</li>
+                                                <li>Nilai yang dilewati dua garis berpotongan, tambahkan dengan nilai terkecil tadi.</li>
+                                            </ul>
+                                        </p>
+                                    </div>
+                                    <table class="table table-hover">
+                                        <caption>Tabel Penugasan Optimum</caption>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">M1</th>
+                                                <th scope="col">M2</th>
+                                                <th scope="col">M3</th>
+                                                <th scope="col">M4</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">J1</th>
+                                                <td class="bg-dark text-light">95</td>
+                                                <td class="bg-dark text-light">20</td>
+                                                <td class="bg-dark text-light">5</td>
+                                                <td class="bg-dark text-light">0</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">J2</th>
+                                                <td class="bg-dark text-light">0</td>
+                                                <td class="bg-dark text-light">5</td>
+                                                <td class="bg-dark text-light">0</td>
+                                                <td class="bg-dark text-light">35</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">J3</th>
+                                                <td class="bg-dark text-light">0</td>
+                                                <td>10</td>
+                                                <td>10</td>
+                                                <td>35</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">J4</th>
+                                                <td class="bg-dark text-light">100</td>
+                                                <td class="bg-dark text-light">0</td>
+                                                <td class="bg-dark text-light">0</td>
+                                                <td class="bg-dark text-light">75</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="alert alert-success" role="alert">
+                                        Jumlah garis yang dapat dibuat sudah memenuhi ketentuan, maka revisi tabel sudah selesai.
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingSix">
+                                  <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                      6. Tabel Penugasan
+                                    </button>
+                                  </h5>
+                                </div>
+                                <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
+                                  <div class="card-body">
+                                    <div class="alert alert-primary" role="alert">
+                                        <h4 class="alert-heading">Ketentuan:</h4>
+                                        <p>
+                                            <ul>
+                                                <li>Dari langkah 5 (Tabel Revisi), pilih nol (0) yang tidak bersilangan.</li>
+                                            </ul>
+                                        </p>
+                                    </div>
+                                    <table class="table table-hover">
+                                        <caption>Tabel Penentuan Penugasan</caption>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">M1</th>
+                                                <th scope="col">M2</th>
+                                                <th scope="col">M3</th>
+                                                <th scope="col">M4</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">J1</th>
+                                                <td class="bg-dark text-light">95</td>
+                                                <td class="bg-dark text-light">20</td>
+                                                <td class="bg-dark text-light">5</td>
+                                                <td class="bg-success text-light">0</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">J2</th>
+                                                <td class="bg-dark text-light">0</td>
+                                                <td class="bg-dark text-light">5</td>
+                                                <td class="bg-success text-light">0</td>
+                                                <td class="bg-dark text-light">35</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">J3</th>
+                                                <td class="bg-success text-light">0</td>
+                                                <td>10</td>
+                                                <td>10</td>
+                                                <td>35</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">J4</th>
+                                                <td class="bg-dark text-light">100</td>
+                                                <td class="bg-success text-light">0</td>
+                                                <td class="bg-dark text-light">0</td>
+                                                <td class="bg-dark text-light">75</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <table class="table table-hover">
+                                        <caption>Tabel Biaya (Pada Langkah 1)</caption>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">M1</th>
+                                                <th scope="col">M2</th>
+                                                <th scope="col">M3</th>
+                                                <th scope="col">M4</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">J1</th>
+                                                <td>210</td>
+                                                <td>150</td>
+                                                <td>180</td>
+                                                <td class="bg-success text-light">130</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">J2</th>
+                                                <td>140</td>
+                                                <td>160</td>
+                                                <td class="bg-success text-light">200</td>
+                                                <td>190</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">J3</th>
+                                                <td class="bg-success text-light">150</td>
+                                                <td>175</td>
+                                                <td>220</td>
+                                                <td>200</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">J4</th>
+                                                <td>200</td>
+                                                <td class="bg-success text-light">115</td>
+                                                <td>160</td>
+                                                <td>190</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <table class="table table-hover">
+                                        <caption>Tabel Penugasan Optimum</caption>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Penugasan</th>
+                                                <th scope="col">Biaya</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">J1 - M4</th>
+                                                <td>130</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">J2 - M3</th>
+                                                <td>200</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">J3 - M1</th>
+                                                <td>150</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">J4 - M2</th>
+                                                <td>115</td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td>595</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="max" role="tabpanel" aria-labelledby="max-tab">
+                        <div id="accordion">
+                            <div class="card">
+                                <div class="card-header" id="headingQ2">
+                                    <h5 class="mb-0">
+                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseQ2" aria-expanded="true" aria-controls="collapseQ2">
+                                        Soal Maksimisasi
+                                    </button>
+                                    </h5>
+                                </div>
+                          
+                                <div id="collapseQ2" class="collapse show" aria-labelledby="headingQ2" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <p>Seorang pengusaha konveksi mempunyai 4 orang karyawati yang memproduksi 4 jenis produk. Jumlah produk yang dihasilkan masing-masing karyawan tiap bulannya dapat dilihat pada tabel berikut:</p>
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="row" rowspan="2">Karyawati</th>
+                                                    <th scope="col" colspan="4">Produk</th>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="col">Celana Panjang</th>
+                                                    <th scope="col">Rok</th>
+                                                    <th scope="col">Helm</th>
+                                                    <th scope="col">Baju Safari</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row">Ulfa</th>
+                                                    <td>6</td>
+                                                    <td>7</td>
+                                                    <td>10</td>
+                                                    <td>9</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Salma</th>
+                                                    <td>2</td>
+                                                    <td>8</td>
+                                                    <td>7</td>
+                                                    <td>8</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Rana</th>
+                                                    <td>8</td>
+                                                    <td>9</td>
+                                                    <td>5</td>
+                                                    <td>12</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Nabila</th>
+                                                    <td>7</td>
+                                                    <td>11</td>
+                                                    <td>12</td>
+                                                    <td>3</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <p>Buat penugasan agar jumlah produk yang dihasilkan bisa maksimum!</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingSeven">
+                                    <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                                        1. Tabel Keuntungan (Jumlah Produk)
+                                    </button>
+                                    </h5>
+                                </div>
+                          
+                                <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <div class="alert alert-primary" role="alert">
+                                            <h4 class="alert-heading">Ketentuan:</h4>
+                                            <p>Dari permasalahan yang ada, buatkan tabel biaya.</p>
+                                        </div>
+                                        <table class="table table-hover">
+                                            <caption>Tabel Keuntungan</caption>
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Celana Panjang (I)</th>
+                                                    <th scope="col">Rok (II)</th>
+                                                    <th scope="col">Helm (III)</th>
+                                                    <th scope="col">Baju Safari (IV)</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row">Ulfa</th>
+                                                    <td>6</td>
+                                                    <td>7</td>
+                                                    <td>10</td>
+                                                    <td>9</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Salma</th>
+                                                    <td>2</td>
+                                                    <td>8</td>
+                                                    <td>7</td>
+                                                    <td>8</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Rana</th>
+                                                    <td>8</td>
+                                                    <td>9</td>
+                                                    <td>5</td>
+                                                    <td>12</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Nabila</th>
+                                                    <td>7</td>
+                                                    <td>11</td>
+                                                    <td>12</td>
+                                                    <td>3</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                              <div class="card-header" id="headingEight">
+                                <h5 class="mb-0">
+                                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                                    2. Matriks <i>Opportunity Loss</i>
+                                  </button>
+                                </h5>
+                              </div>
+                              <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordion">
+                                <div class="card-body">
+                                    <div class="alert alert-primary" role="alert">
+                                        <h4 class="alert-heading">Ketentuan:</h4>
+                                        <p>Tentukan nilai maksimal setiap baris lalu lakukan pengurangan ke masing-masing elemen baris. (Nilai sebenarnya negatif).</p>
+                                    </div>
+                                    <table class="table table-hover">
+                                        <caption>Tabel Pengurangan Baris</caption>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">I</th>
+                                                <th scope="col">II</th>
+                                                <th scope="col">III</th>
+                                                <th scope="col">IV</th>
+                                                <th scope="col">Nilai Maksimal</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Ulfa</th>
+                                                <td>6</td>
+                                                <td>7</td>
+                                                <td><b class="text-success">10</b></td>
+                                                <td>9</td>
+                                                <td>10</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Salma</th>
+                                                <td>2</td>
+                                                <td><b class="text-success">8</b></td>
+                                                <td>7</td>
+                                                <td><b class="text-success">8</b></td>
+                                                <td>8</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Rana</th>
+                                                <td>8</td>
+                                                <td>9</td>
+                                                <td>5</td>
+                                                <td><b class="text-success">12</b></td>
+                                                <td>12</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Nabila</th>
+                                                <td>7</td>
+                                                <td>11</td>
+                                                <td><b class="text-success">12</b></td>
+                                                <td>3</td>
+                                                <td>12</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <table class="table table-hover">
+                                        <caption>Matriks <i>Opportunity Loss</i></caption>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">I</th>
+                                                <th scope="col">II</th>
+                                                <th scope="col">III</th>
+                                                <th scope="col">IV</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Ulfa</th>
+                                                <td>4</td>
+                                                <td>3</td>
+                                                <td>0</td>
+                                                <td>1</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Salma</th>
+                                                <td>6</td>
+                                                <td>0</td>
+                                                <td>1</td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Rana</th>
+                                                <td>4</td>
+                                                <td>3</td>
+                                                <td>7</td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Nabila</th>
+                                                <td>5</td>
+                                                <td>1</td>
+                                                <td>0</td>
+                                                <td>9</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="card">
+                              <div class="card-header" id="headingNine">
+                                <h5 class="mb-0">
+                                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                                    3. Matriks <i>Total Opportunity Loss</i>
+                                  </button>
+                                </h5>
+                              </div>
+                              <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#accordion">
+                                <div class="card-body">
+                                    <div class="alert alert-warning" role="alert">
+                                        <h4 class="alert-heading">Perhatian:</h4>
+                                        <p>Jika terdapat kolom yang tidak memiliki nol (0), kurangi dengan nilai terkecilnya untuk setiap elemen di kolom tersebut. Gunanya, meminimalkan <i>Opportunity Loss</i></p>
+                                    </div>
+                                    <table class="table table-hover">
+                                        <caption>Tabel Pengurangan Kolom</caption>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">I</th>
+                                                <th scope="col">II</th>
+                                                <th scope="col">III</th>
+                                                <th scope="col">IV</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Ulfa</th>
+                                                <td><b class="text-success">4</b></td>
+                                                <td>3</td>
+                                                <td>0</td>
+                                                <td>1</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Salma</th>
+                                                <td>6</td>
+                                                <td>0</td>
+                                                <td>1</td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Rana</th>
+                                                <td><b class="text-success">4</b></td>
+                                                <td>3</td>
+                                                <td>7</td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Nabila</th>
+                                                <td>5</td>
+                                                <td>1</td>
+                                                <td>0</td>
+                                                <td>9</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <table class="table table-hover">
+                                        <caption>Matriks <i>Total Opportunity Loss</i></caption>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">I</th>
+                                                <th scope="col">II</th>
+                                                <th scope="col">III</th>
+                                                <th scope="col">IV</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Ulfa</th>
+                                                <td>0</td>
+                                                <td>3</td>
+                                                <td>0</td>
+                                                <td>1</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Salma</th>
+                                                <td>2</td>
+                                                <td>0</td>
+                                                <td>1</td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Rana</th>
+                                                <td>0</td>
+                                                <td>3</td>
+                                                <td>7</td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Nabila</th>
+                                                <td>1</td>
+                                                <td>1</td>
+                                                <td>0</td>
+                                                <td>9</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingTen">
+                                  <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                                      4. Membentuk Penugasan Optimum
+                                    </button>
+                                  </h5>
+                                </div>
+                                <div id="collapseTen" class="collapse" aria-labelledby="headingTen" data-parent="#accordion">
+                                  <div class="card-body">
+                                    <div class="alert alert-primary" role="alert">
+                                        <h4 class="alert-heading">Ketentuan:</h4>
+                                        <p>
+                                            <ul>
+                                                <li>Utamakan garis horizontal</li>
+                                                <li>Utamakan baris dengan nilai nol (0) yang lebih banyak.</li>
+                                                <li>Utamakan kolom dengan nol (0) yang lebih banyak dan tidak berpotongan dengan dua garis, atau persilangan nol (0) paling sedikit.</li>
+                                                <li>Jumlah garis harus sama dengan jumlah baris/kolom.</li>
+                                            </ul>
+                                        </p>
+                                    </div>
+                                    <table class="table table-hover">
+                                        <caption>Tabel Penugasan Optimum</caption>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">I</th>
+                                                <th scope="col">II</th>
+                                                <th scope="col">III</th>
+                                                <th scope="col">IV</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Ulfa</th>
+                                                <td class="bg-dark text-light">0</td>
+                                                <td class="bg-dark text-light">3</td>
+                                                <td class="bg-dark text-light">0</td>
+                                                <td class="bg-dark text-light">1</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Salma</th>
+                                                <td class="bg-dark text-light">2</td>
+                                                <td class="bg-dark text-light">0</td>
+                                                <td class="bg-dark text-light">1</td>
+                                                <td class="bg-dark text-light">0</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Rana</th>
+                                                <td class="bg-dark text-light">0</td>
+                                                <td class="bg-dark text-light">3</td>
+                                                <td class="bg-dark text-light">7</td>
+                                                <td class="bg-dark text-light">0</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Nabila</th>
+                                                <td>1</td>
+                                                <td>1</td>
+                                                <td class="bg-dark text-light">0</td>
+                                                <td>9</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="alert alert-success" role="alert">
+                                        Jumlah garis yang dapat dibuat sudah memenuhi ketentuan, maka revisi tabel tidak perlu dilakukan. Langkah 5 (Revisi Tabel) bisa dilewati. 
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingEleven">
+                                  <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
+                                      5. Revisi Tabel (<i>Revized Matrix</i>)
+                                    </button>
+                                  </h5>
+                                </div>
+                                <div id="collapseEleven" class="collapse" aria-labelledby="headingEleven" data-parent="#accordion">
+                                  <div class="card-body">
+                                    <div class="alert alert-primary" role="alert">
+                                        <h4 class="alert-heading">Ketentuan:</h4>
+                                        <p>
+                                            <ul>
+                                                <li>Kurangkan setiap elemen dengan nilai terkecil yang tidak dilewati garis.</li>
+                                                <li>Nilai yang dilewati dua garis berpotongan, tambahkan dengan nilai terkecil tadi.</li>
+                                            </ul>
+                                        </p>
+                                    </div>
+                                    <div class="alert alert-success" role="alert">
+                                        Jumlah garis yang dapat dibuat sudah memenuhi ketentuan, maka revisi tabel tidak dilakukan.
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingTwelve">
+                                  <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve">
+                                      6. Tabel Penugasan (Optimal dan Keuntungan Total)
+                                    </button>
+                                  </h5>
+                                </div>
+                                <div id="collapseTwelve" class="collapse" aria-labelledby="headingTwelve" data-parent="#accordion">
+                                  <div class="card-body">
+                                    <div class="alert alert-primary" role="alert">
+                                        <h4 class="alert-heading">Ketentuan:</h4>
+                                        <p>
+                                            <ul>
+                                                <li>Dari langkah 4, pilih nol (0) yang tidak bersilangan.</li>
+                                            </ul>
+                                        </p>
+                                    </div>
+                                    <table class="table table-hover">
+                                        <caption>Tabel Penentuan Penugasan</caption>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">I</th>
+                                                <th scope="col">II</th>
+                                                <th scope="col">III</th>
+                                                <th scope="col">IV</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Ulfa</th>
+                                                <td class="bg-success text-light">0</td>
+                                                <td class="bg-dark text-light">3</td>
+                                                <td class="bg-dark text-light">0</td>
+                                                <td class="bg-dark text-light">1</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Salma</th>
+                                                <td class="bg-dark text-light">2</td>
+                                                <td class="bg-success text-light">0</td>
+                                                <td class="bg-dark text-light">1</td>
+                                                <td class="bg-dark text-light">0</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Rana</th>
+                                                <td class="bg-dark text-light">0</td>
+                                                <td class="bg-dark text-light">3</td>
+                                                <td class="bg-dark text-light">7</td>
+                                                <td class="bg-success text-light">0</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Nabila</th>
+                                                <td>1</td>
+                                                <td>1</td>
+                                                <td class="bg-success text-light">0</td>
+                                                <td>9</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <table class="table table-hover">
+                                        <caption>Tabel Keuntungan (Pada Langkah 1)</caption>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">I</th>
+                                                <th scope="col">II</th>
+                                                <th scope="col">III</th>
+                                                <th scope="col">IV</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Ulfa</th>
+                                                <td class="bg-success text-light">6</td>
+                                                <td>7</td>
+                                                <td>10</td>
+                                                <td>9</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Salma</th>
+                                                <td>2</td>
+                                                <td class="bg-success text-light">8</td>
+                                                <td>7</td>
+                                                <td>8</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Rana</th>
+                                                <td>8</td>
+                                                <td>9</td>
+                                                <td>5</td>
+                                                <td class="bg-success text-light">12</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Nabila</th>
+                                                <td>7</td>
+                                                <td>11</td>
+                                                <td class="bg-success text-light">12</td>
+                                                <td>3</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <table class="table table-hover">
+                                        <caption>Tabel Penugasan Optimum</caption>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Penugasan</th>
+                                                <th scope="col">Biaya</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Ulfa - I (Celana Panjang)</th>
+                                                <td>6</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Salma - II (Rok)</th>
+                                                <td>8</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Rana - IV (Baju Safari)</th>
+                                                <td>12</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Nabila - III (Helm)</th>
+                                                <td>12</td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td>38</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- General JS Scripts -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="./assets/js/stisla.js"></script>
+
+</body>
+</html>
